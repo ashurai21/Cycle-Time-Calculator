@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cycle Time Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input { margin: 5px; }
+    .result { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Process Step Time Calculator</h2>
+
+  <div id="stepInputs">
+    <input type="number" placeholder="Step 1 Time (mins)" class="stepTime" /> <br />
+    <input type="number" placeholder="Step 2 Time (mins)" class="stepTime" /> <br />
+    <input type="number" placeholder="Step 3 Time (mins)" class="stepTime" /> <br />
+    <!-- Add more steps as needed -->
+  </div>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="result" id="cycleTimeResult"></div>
+  <div class="result" id="leadTimeResult"></div>
+
+  <script>
+    function calculate() {
+      const stepInputs = document.querySelectorAll(".stepTime");
+      let totalCycleTime = 0;
+      stepInputs.forEach(input => {
+        const value = parseFloat(input.value) || 0;
+        totalCycleTime += value;
+      });
+
+      // Sample logic (customize based on your use case)
+      const leadTime = totalCycleTime + 10; // assuming 10 mins waiting/buffer time
+
+      document.getElementById("cycleTimeResult").innerText = Total Cycle Time: ${totalCycleTime} mins;
+      document.getElementById("leadTimeResult").innerText = Estimated Lead Time: ${leadTime} mins;
+    }
+  </script>
+</body>
+</html>
